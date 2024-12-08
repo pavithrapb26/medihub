@@ -1,0 +1,153 @@
+<!-- <h1>Order {{ medicine.name }}</h1>
+<img src="{{ medicine.image.url }}" alt="{{ medicine.name }}">
+<p>Price: ${{ medicine.price }}</p>
+<p>Stock: {{ medicine.stock }}</p>
+
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" id="quantity" value="1" min="1" max="{{ medicine.stock }}">
+    <button type="submit">Place Order</button>
+</form> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order {{ medicine.name }}</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #56ccf2, #28a745); /* Blue to Green gradient */
+            color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .order-card {
+            background-color: #fff;
+            color: #333;
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: auto;
+            text-align: left;
+        }
+
+        .order-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .order-card h2 {
+            font-size: 2.2em;
+            color: #28a745; /* Green color */
+            margin-bottom: 10px;
+        }
+
+        .order-card p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .order-card form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .order-card label {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .order-card input {
+            padding: 10px;
+            font-size: 1em;
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            width: 100%;
+            background-color: #f9f9f9;
+            transition: border 0.3s ease;
+        }
+
+        .order-card input:focus {
+            border-color: #56ccf2; /* Blue on focus */
+            outline: none;
+        }
+
+        .order-card button {
+            padding: 15px;
+            font-size: 1.2em;
+            background-color: #2f80ed; /* Blue background */
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .order-card button:hover {
+            background-color: #28a745; /* Green on hover */
+        }
+
+        .error-message {
+            color: red;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        .order-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="order-card">
+        <h2>Order {{ medicine.name }}</h2>
+        <img src="{{ medicine.image.url }}" alt="{{ medicine.name }}">
+        <p><strong>Price:</strong> ₹{{ medicine.price }}</p>
+        <p><strong>Stock:</strong> {{ medicine.stock }}</p>
+
+        {% if error %}
+            <p class="error-message">{{ error }}</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <label for="quantity">Quantity:</label>
+            <input type="number" name="quantity" id="quantity" value="1" min="1" max="{{ medicine.stock }}">
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+
+</body>
+</html>

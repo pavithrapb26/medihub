@@ -1,0 +1,190 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><h1>welcome to "Medihub"</h1>
+    .....<br>
+    .....<br>
+    .....<br>
+    ....<br>
+    ...<br>
+    ....<br>
+    ....<br>
+        <a href="{% url 'customer_login' %}">customer login</a>           
+</body>
+</html> -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediHub - Signin</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: whitesmoke;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .header {
+            position: relative;
+            background-color: #004d99;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .header .buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .header .btn {
+            background: #65bc50;
+            color: white;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+        .header .btn:hover {
+            background: #65bc50;
+        }
+
+        .marquee {
+            background:#65bc50;
+            color: white;
+            padding: 10px 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .marquee span {
+            display: inline-block;
+            animation: marquee 10s linear infinite;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .carousel-item img {
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .carousel {
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>Welcome to MediHub</h1>
+        <div class="buttons">
+            <a href="{% url 'customer_login' %}" class="btn">Sign In</button>
+            <a href="{% url 'customer_register' %}" class="btn">Register</button>
+            <a href="{}" class="btn btn-dark">Admin</a></button>
+        </div>
+    </div>
+
+    <!-- Skincare Section -->
+    <div class="marquee">
+        <span>Face Cream &bull; Moisturizer &bull; Sunscreen &bull; Anti-Aging Cream &bull; Cleanser</span>
+    </div>
+    <div id="skincareCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'images/skin3.jpg' %}" class="d-block w-100" alt="Skincare Product 1">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/skin2.jpg' %}" class="d-block w-100" alt="Skincare Product 2">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/skin1.jpg' %}" class="d-block w-100" alt="Skincare Product 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#skincareCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#skincareCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+
+    <!-- Haircare Section -->
+    <div class="marquee">
+        <span>Shampoo &bull; Conditioner &bull; Hair Oil &bull; Hair Mask &bull; Hair Serum</span>
+    </div>
+    <div id="haircareCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'images/hair1.avif' %}" class="d-block w-100" alt="Haircare Product 1">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/hair2.avif' %}" class="d-block w-100" alt="Haircare Product 2">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/hair3.avif' %}" class="d-block w-100" alt="Haircare Product 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#haircareCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#haircareCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+
+    <!-- General Medicine Section -->
+    <div class="marquee">
+        <span>Paracetamol &bull; Ibuprofen &bull; Antacid &bull; Multivitamin &bull; Pain Relief Gel</span>
+    </div>
+    <div id="medicineCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'images/crsl10.jpeg' %}" class="d-block w-100" alt="Medicine 1">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/crsl16.webp' %}" class="d-block w-100" alt="Medicine 2">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/crsl15.webp' %}" class="d-block w-100" alt="Medicine 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#medicineCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#medicineCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success</title>
+</head>
+<body>
+    <h1>Payment Successful!</h1>
+    <p>Thank you for your purchase.</p>
+    <a href="{% url 'dashboard' %}">Return to Dashboard</a>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9fafb; /* Light background for a clean look */
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #28a745; /* Green */
+            font-size: 2.5em;
+            margin: 20px 0;
+            text-align: center;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .success-icon {
+            font-size: 6em;
+            color: #28a745; /* Green */
+            margin-bottom: 20px;
+            animation: bounce 0.8s infinite alternate;
+        }
+        .success-button {
+            display: inline-block;
+            background-color: #28a745; /* Green */
+            color: white;
+            font-size: 1.2em;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .success-button:hover {
+            background-color: #218838; /* Darker Green */
+            transform: translateY(-5px);
+        }
+        .success-button:active {
+            transform: translateY(2px);
+        }
+        .dashboard-link {
+            font-size: 1.1em;
+            color: #28a745;
+            text-decoration: none;
+            margin-top: 30px;
+            font-weight: bold;
+            border: 2px solid #28a745;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .dashboard-link:hover {
+            background-color: #28a745;
+            color: white;
+        }
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="success-container">
+        <div class="success-icon">
+            ✓
+        </div>
+        <h1>Payment Successful!</h1>
+        <p>Thank you for your purchase. Your transaction has been completed successfully.</p>
+        <a href="{% url 'dashboard' %}" class="success-button">Continue Shopping</a>
+        <a href="{% url 'dashboard' %}" class="dashboard-link">Return to Dashboard</a>
+    </div>
+
+</body>
+</html>

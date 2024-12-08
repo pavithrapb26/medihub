@@ -1,0 +1,203 @@
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h2>Search Medicine</h2>
+<form method="get" action="{% url 'search_medicine' %}">
+    <input type="text" name="q" placeholder="Enter medicine name" value="{{ query|default:'' }}">
+    <button type="submit" class="btn btn-success">Search</button>
+</form>
+
+{% if query %}
+    <h3>Results for "{{ query }}"</h3>
+    {% if medicines %}
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+            {% for medicine in medicines %}
+            <div style="border: 1px solid #ddd; padding: 10px; width: 200px; text-align: center;">
+                {% if medicine.image %}
+                <img src="{{ medicine.image.url }}" alt="{{ medicine.name }}" style="width: 100%; height: 150px; object-fit: cover;">
+                {% else %}
+                <img src="{% static 'default_medicine.jpg' %}" alt="Default Image" style="width: 100%; height: 150px; object-fit: cover;">
+                {% endif %}
+                <h4>{{ medicine.name }}</h4>
+                <p>Price: ${{ medicine.price }}</p>
+                <p>Category: {{ medicine.category }}</p>
+                <p>Stock: {{ medicine.stock }}</p>
+                <a href="{% url 'buy_medicine' medicine.id %}" class="btn btn-primary">Buy Now</a>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No medicines found for "{{ query }}".</p>
+    {% endif %}
+{% endif %}
+</body>
+</html> -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Medicine</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 40px;
+            color: #333;
+        }
+
+        /* Title styling */
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #2f80ed; /* Blue */
+            margin-bottom: 30px;
+        }
+
+        /* Search Form styling */
+        .search-form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .search-form input[type="text"] {
+            padding: 15px;
+            width: 60%;
+            font-size: 1.1em;
+            border-radius: 25px;
+            border: 2px solid #2f80ed;
+            outline: none;
+            transition: border-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .search-form input[type="text"]:focus {
+            border-color: #007bff;
+        }
+
+        .search-form button {
+            padding: 14px 20px;
+            font-size: 1.1em;
+            background-color: #2f80ed;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-form button:hover {
+            background-color: #007bff;
+        }
+
+        /* Results section */
+        .results-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .medicine-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            width: 230px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .medicine-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .medicine-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .medicine-card h4 {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .medicine-card p {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .medicine-card .btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+        }
+
+        .medicine-card .btn:hover {
+            background-color: #218838;
+        }
+
+        /* No results message */
+        .no-results {
+            text-align: center;
+            font-size: 1.5em;
+            color: #ff6347; /* Tomato */
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Search Medicine</h2>
+
+    <form method="get" action="{% url 'search_medicine' %}" class="search-form">
+        <input type="text" name="q" placeholder="Enter medicine name" value="{{ query|default:'' }}">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if query %}
+        <h3>Results for "{{ query }}"</h3>
+        {% if medicines %}
+            <div class="results-section">
+                {% for medicine in medicines %}
+                <div class="medicine-card">
+                    {% if medicine.image %}
+                    <img src="{{ medicine.image.url }}" alt="{{ medicine.name }}">
+                    {% else %}
+                    <img src="{% static 'default_medicine.jpg' %}" alt="Default Image">
+                    {% endif %}
+                    <h4>{{ medicine.name }}</h4>
+                    <p>Price: ₹{{ medicine.price }}</p>
+                    <p>Category: {{ medicine.category }}</p>
+                    <p>Stock: {{ medicine.stock }}</p>
+                    <a href="{% url 'buy_medicine' medicine.id %}" class="btn">Buy Now</a>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-results">No medicines found for "{{ query }}".</p>
+        {% endif %}
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+  <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Medicine Suggestion</title>
+</head>
+<body>
+    <h1>AI Medicine Suggestion</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="symptom">Enter your symptom:</label>
+        <input type="text" id="symptom" name="symptom" required>
+        <button type="submit">Get Suggestion</button>
+    </form>
+
+    {% if recommended_medicine %}
+        <h2>Suggested Medicine</h2>
+        <p>For symptom: <strong>{{ symptom }}</strong></p>
+        <p>Medicine: <strong>{{ recommended_medicine.name }}</strong></p>
+        <p>Description: {{ recommended_medicine.description }}</p>
+        <p>Price: ${{ recommended_medicine.price }}</p>
+        <a href="{% url 'buy_medicine' recommended_medicine.id %}">Buy Now</a> 
+    {% endif %}
+    <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+</body>
+</html>  -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Medicine Suggestion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #4caf50;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        input[type="text"]:focus {
+            border-color: #4caf50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        }
+        button {
+            padding: 10px;
+            font-size: 1em;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .suggestion {
+            margin-top: 20px;
+        }
+        .suggestion h2 {
+            color: #4caf50;
+            border-bottom: 2px solid #4caf50;
+            display: inline-block;
+        }
+        .suggestion p {
+            margin: 5px 0;
+            font-size: 1em;
+        }
+        .buy-now {
+            display: inline-block;
+            padding: 10px 15px;
+            font-size: 1em;
+            color: white;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .buy-now:hover {
+            background-color: #0056b3;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #555;
+        }
+        .back-link:hover {
+            color: #333;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Medicine Suggestion</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            <label for="symptom">Enter your symptom:</label>
+            <input type="text" id="symptom" name="symptom" placeholder="e.g., headache, fever" required>
+            <button type="submit">Get Suggestion</button>
+        </form>
+
+        {% if recommended_medicine %}
+        <div class="suggestion">
+            <h2>Suggested Medicine</h2>
+            <p><strong>Symptom:</strong> {{ symptom }}</p>
+            <p><strong>Medicine:</strong> {{ recommended_medicine.name }}</p>
+            <p><strong>Description:</strong> {{ recommended_medicine.description }}</p>
+            <p><strong>Price:</strong> ₹{{ recommended_medicine.price }}</p>
+            <a class="buy-now" href="{% url 'buy_medicine' recommended_medicine.id %}">Buy Now</a>
+        </div>
+        {% endif %}
+        
+        <a class="back-link" href="{% url 'dashboard' %}">Back to Dashboard</a>
+    </div>
+</body>
+</html>
+
+ 
+
+
+ 

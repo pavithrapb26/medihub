@@ -1,0 +1,162 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Sales History</title>
+</head>
+<body>
+    <h1>Your Sales History</h1>
+    {% if sales %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Medicine Name</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Payment Method</th>
+                    <th>Sale Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sale in sales %}
+                    <tr>
+                        <td>{{ sale.medicine.name }}</td>
+                        <td>{{ sale.quantity }}</td>
+                        <td>${{ sale.total_price }}</td>
+                        <td>{{ sale.payment_method }}</td>
+                        <td>{{ sale.sale_date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You have no sales history yet.</p>
+    {% endif %}
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Sales History</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #2f80ed; /* Blue color */
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        th {
+            background-color: #28a745; /* Green color */
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+
+        td {
+            color: #555;
+        }
+
+        td a {
+            text-decoration: none;
+            color: #2f80ed;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #555;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            table {
+                font-size: 1em;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Your Sales History</h1>
+
+    {% if sales %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Medicine Name</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Payment Method</th>
+                    <th>Sale Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sale in sales %}
+                    <tr>
+                        <td>{{ sale.medicine.name }}</td>
+                        <td>{{ sale.quantity }}</td>
+                        <td>₹{{ sale.total_price }}</td>
+                        <td>{{ sale.payment_method }}</td>
+                        <td>{{ sale.sale_date|date:"Y-m-d H:i" }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You have no sales history yet.</p>
+    {% endif %}
+    
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>About MediHub</h1>
+        <p>
+            MediHub is a comprehensive pharmacy management system designed to revolutionize the way customers, 
+            pharmacists, and doctors interact with medicines and healthcare services. Our platform simplifies 
+            the process of purchasing medicines, managing prescriptions, and providing professional healthcare 
+            guidance, all within a user-friendly environment.
+        </p>
+        <h3>Key Features:</h3>
+        <ul>
+            <li><b>Streamlined Medicine Ordering:</b> Search and order medicines by category with ease.</li>
+            <li><b>Prescription Management:</b> Upload, validate, and store prescriptions securely.</li>
+            <li><b>AI-Powered Recommendations:</b> Get medicine suggestions based on symptoms.</li>
+            <li><b>Secure Payments:</b> Multiple payment methods with seamless integration.</li>
+            <li><b>User Profiles:</b> Manage your profile with purchase history and feedback.</li>
+            <li><b>Feedback and Suggestions:</b> Share your experiences to help us improve.</li>
+        </ul>
+        <h3>Our Mission:</h3>
+        <p>
+            At MediHub, we aim to bridge the gap between patients and pharmacies by providing a platform that 
+            caters to all healthcare needs efficiently. We strive to ensure timely delivery, quality products, 
+            and excellent customer service.
+        </p>
+        <h3>Why Choose MediHub?</h3>
+        <p>
+            MediHub stands out as a reliable solution with advanced features like AI recommendations, 
+            streamlined inventory management, and robust sales tracking. Whether you are a customer, pharmacist, 
+            or doctor, MediHub adapts to meet your needs seamlessly.
+        </p>
+        <p class="text-center mt-4">
+            <img src="{% static 'images/medihub_logo.png' %}" alt="MediHub Logo" class="img-fluid" style="max-width: 300px;">
+        </p>
+    </div>
+    
+    
+    <!-- 5. Optional: Include the "About" Section on the Welcome Page
+    
+    If you want a brief "About" section on your homepage (e.g., welcome.html), you can add the following snippet:
+    
+    <div class="about-section">
+        <h2>About MediHub</h2>
+        <p>
+            MediHub is your go-to pharmacy management system, offering advanced features to simplify medicine 
+            management and healthcare services. With MediHub, you can easily purchase medicines, manage 
+            prescriptions, and receive expert recommendations from trusted doctors.
+        </p>
+        <a href="{% url 'about' %}" class="btn btn-info">Learn More</a> -->
+    <!-- </div> -->
+    
+<!-- </body>
+</html> --> -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About MediHub</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8f7; /* Light background for contrast */
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Container styling */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Title styling */
+        h1 {
+            font-size: 3em;
+            text-align: center;
+            color: #006f6a; /* Peacock blue */
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        /* Paragraph and list styling */
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            color: #333;
+        }
+
+        ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745; /* Green checkmarks */
+            font-weight: bold;
+        }
+
+        /* Section Headers */
+        h3 {
+            font-size: 2em;
+            color: #006f6a; /* Peacock blue */
+            margin-top: 30px;
+            font-weight: bold;
+        }
+
+        /* Image styling */
+        .img-fluid {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Button styling */
+        .btn-info {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #006f6a; /* Peacock blue */
+            color: white;
+            font-size: 1.2em;
+            text-align: center;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-info:hover {
+            background-color: #004f47; /* Darker peacock blue on hover */
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h3 {
+                font-size: 1.8em;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            ul li {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1>About MediHub</h1>
+        <p>
+            MediHub is a comprehensive pharmacy management system designed to revolutionize the way customers, 
+            pharmacists, and doctors interact with medicines and healthcare services. Our platform simplifies 
+            the process of purchasing medicines, managing prescriptions, and providing professional healthcare 
+            guidance, all within a user-friendly environment.
+        </p>
+        
+        <h3>Key Features:</h3>
+        <ul>
+            <li><b>Streamlined Medicine Ordering:</b> Search and order medicines by category with ease.</li>
+            <li><b>Prescription Management:</b> Upload, validate, and store prescriptions securely.</li>
+            <li><b>AI-Powered Recommendations:</b> Get medicine suggestions based on symptoms.</li>
+            <li><b>Secure Payments:</b> Multiple payment methods with seamless integration.</li>
+            <li><b>User Profiles:</b> Manage your profile with purchase history and feedback.</li>
+            <li><b>Feedback and Suggestions:</b> Share your experiences to help us improve.</li>
+        </ul>
+        
+        <h3>Our Mission:</h3>
+        <p>
+            At MediHub, we aim to bridge the gap between patients and pharmacies by providing a platform that 
+            caters to all healthcare needs efficiently. We strive to ensure timely delivery, quality products, 
+            and excellent customer service.
+        </p>
+        
+        <h3>Why Choose MediHub?</h3>
+        <p>
+            MediHub stands out as a reliable solution with advanced features like AI recommendations, 
+            streamlined inventory management, and robust sales tracking. Whether you are a customer, pharmacist, 
+            or doctor, MediHub adapts to meet your needs seamlessly.
+        </p>
+        
+        <p class="text-center mt-4">
+            <img src="{% static 'images/medihub_logo.png' %}" alt="MediHub Logo" class="img-fluid" style="max-width: 300px;">
+        </p>
+        
+        <!-- Optional: Learn More Button (if you want to link to more info or redirect) -->
+        <div class="text-center">
+            <a href="{% url 'about' %}" class="btn-info">Learn More</a>
+        </div>
+    </div>
+
+</body>
+</html>

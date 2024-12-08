@@ -1,0 +1,195 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>My Orders</title>
+</head>
+<body>
+    <h1>My Orders</h1>
+    {% if orders %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Medicine</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Status</th>
+                    <th>Order Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.medicine.name }}</td>
+                        <td>{{ order.quantity }}</td>
+                        <td>${{ order.total_price }}</td>
+                        <td>{{ order.get_status_display }}</td>
+                        <td>{{ order.order_date|date:"Y-m-d H:i" }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You have not placed any orders yet.</p>
+    {% endif %}
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f7f7f7;
+            color: #333;
+            padding: 40px 20px;
+            margin: 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2f80ed; /* Blue */
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            font-size: 1.1em;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #28a745; /* Green */
+            color: #fff;
+            font-size: 1.2em;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+
+        td {
+            color: #555;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+
+        .status.pending {
+            color: #f39c12;
+        }
+
+        .status.completed {
+            color: #28a745;
+        }
+
+        .status.cancelled {
+            color: #e74c3c;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #555;
+            margin-top: 20px;
+        }
+
+        /* Button Style */
+        .btn {
+            background-color: #2f80ed;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #28a745;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            table {
+                width: 100%;
+                font-size: 1em;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            .btn {
+                font-size: 1em;
+                padding: 10px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Orders</h1>
+
+    {% if orders %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Medicine</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Status</th>
+                    <th>Order Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.medicine.name }}</td>
+                        <td>{{ order.quantity }}</td>
+                        <td>${{ order.total_price }}</td>
+                        <td class="status {% if order.status == 'Pending' %}pending{% elif order.status == 'Completed' %}completed{% else %}cancelled{% endif %}">
+                            {{ order.get_status_display }}
+                        </td>
+                        <td>{{ order.order_date|date:"Y-m-d H:i" }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You have not placed any orders yet. <a href="#" class="btn">Browse Products</a></p>
+    {% endif %}
+
+</body>
+</html>
+

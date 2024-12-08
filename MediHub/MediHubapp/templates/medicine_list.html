@@ -1,0 +1,159 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Medicines</title>
+</head>
+<body>
+    <h1>Available Medicines</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Medicine</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medicine in medicines %}
+            <tr>
+                <td>{{ medicine.name }}</td>
+                <td>${{ medicine.price }}</td>
+                <td>{{ medicine.stock }}</td>
+                <td>
+                    <a href="{% url 'buy_medicine' medicine.id %}">Buy</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Medicines</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #56ccf2, #2f80ed); /* Gradient background */
+            color: #a31c1c;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: #ffffff; /* White background for the table */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        thead {
+            background-color: #2f80ed; /* Blue header */
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2; /* Light gray for alternate rows */
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #e8f7fe; /* Light blue */
+        }
+
+        tbody tr:hover {
+            background-color: #56ccf2; /* Bright hover effect */
+            color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #2f80ed;
+            color: #fff;
+            font-size: 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        a:hover {
+            background-color: #56ccf2;
+            transform: scale(1.1);
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Available Medicines</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Medicine</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medicine in medicines %}
+            <tr>
+                <td>{{ medicine.name }}</td>
+                <td>₹{{ medicine.price }}</td>
+                <td>{{ medicine.stock }}</td>
+                <td>
+                    <a href="{% url 'buy_medicine' medicine.id %}">Buy Now</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <footer>
+        <p>© 2024 MediHub. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

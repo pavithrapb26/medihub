@@ -1,0 +1,183 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ medicine.name }} Details</title>
+</head>
+<body>
+    <h1>{{ medicine.name }}</h1>
+    <p><strong>Description:</strong> {{ medicine.description }}</p>
+    <p><strong>Price:</strong> ${{ medicine.price }}</p>
+    <p><strong>Stock:</strong> {{ medicine.stock }}</p>
+
+    <h2>Available from:</h2>
+    <ul>
+        {% for company in companies %}
+            <li>{{ company.name }} - {{ company.email }}</li>
+        {% endfor %}
+    </ul>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" min="1" max="{{ medicine.stock }}" required>
+        <button type="submit">Buy</button>
+    </form> -->
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ medicine.name }} - Details</title>
+</head>
+<body>
+    <h1>{{ medicine.name }}</h1>
+    <p>category:{{medicine.category}}</p>
+    <p>Price: ₹{{ medicine.price }}</p>
+    <p>expiry date:{{medicine.expiry_date}}</p>
+    <p>Description: {{ medicine.description }}</p>
+    <p>rating:{{medicine.ratings}}</p>
+    <p>Stock: {{ medicine.stock }}</p>
+    <p>Company:
+        {% for company in medicine.company.name %}
+            {{ company.name }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    <p>{{medicine.image}}</p>
+
+</body>
+</html>
+
+     -->
+
+     <!-- <!DOCTYPE html>
+     <html lang="en">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>{{ medicine.name }} - Details</title>
+     </head>
+     <body>
+         <h1>{{ medicine.name }}</h1>
+         <p>Category: {{ medicine.category }}</p>
+         <p>Price: ₹{{ medicine.price }}</p>
+         <p>Expiry Date: {{ medicine.expiry_date }}</p>
+         <p>Description: {{ medicine.description }}</p>
+         <p>Rating: {{ medicine.ratings }}</p>
+         <p>Stock: {{ medicine.stock }}</p>
+         <p>company:{{medicine.company.name}}</p>
+         <img src="{{ medicine.image.url }}" alt="{{ medicine.name }}" style="max-width: 300px; height: auto;">
+     </body>
+     </html> -->
+     
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ medicine.name }} - Details</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e8f5e9; /* Light green background */
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2a9d8f; /* Teal green */
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #4a4a4a;
+        }
+
+        p span {
+            font-weight: bold;
+            color: #2a9d8f; /* Teal */
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            border: 3px solid #2a9d8f; /* Teal border for image */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            height: auto;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff; /* White background for the content area */
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        /* Buttons */
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #1976d2; /* Blue */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #0d47a1; /* Darker blue */
+        }
+
+        .highlight {
+            color: #1976d2; /* Blue text highlight */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ medicine.name }}</h1>
+        <p>Category: <span class="highlight">{{ medicine.category }}</span></p>
+        <p>Price: <span class="highlight">₹{{ medicine.price }}</span></p>
+        <p>Expiry Date: <span class="highlight">{{ medicine.expiry_date }}</span></p>
+        <p>Description: <span>{{ medicine.description }}</span></p>
+        <p>Rating: <span class="highlight">{{ medicine.ratings }}</span></p>
+        <p>Stock: <span class="highlight">{{ medicine.stock }}</span></p>
+        <p>Company: <span class="highlight">{{ medicine.company.name }}</span></p>
+        <img src="{{ medicine.image.url }}" alt="{{ medicine.name }}">
+        <a href="{% url 'dashboard' %}" class="back-button">Back to Dashboard</a>
+    </div>
+    <div class="footer">
+        <p>© 2024 MediHub. All rights reserved.</p>
+    </div>
+</body>
+</html>

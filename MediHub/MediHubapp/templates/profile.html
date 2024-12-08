@@ -1,0 +1,224 @@
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h2>Your Profile</h2>
+<div style="display: flex; align-items: center; gap: 20px;">
+    {% if customer.profile_image %}
+    <img src="{{ customer.profile_image.url }}" alt="Profile Image" style="width: 150px; height: 150px; border-radius: 50%;">
+    {% else %}
+     <img src="{% static 'default_profile.png' %}" alt="Default Profile Image" style="width: 150px; height: 150px; border-radius: 50%;"> -->
+    <!-- {% endif %}
+    <div>
+        <p><strong>Name:</strong> {{ customer.user.get_full_name }}</p>
+        <p><strong>Email:</strong> {{ customer.user.email }}</p>
+        <p><strong>Phone:</strong> {{ customer.phone }}</p>
+        <p><strong>Address:</strong> {{ customer.address }}</p>
+        <p><strong>Date of Birth:</strong> {{ customer.date_of_birth }}</p>
+    </div>
+</div>
+
+<h3>Your Activity</h3>
+<h4>Sales History</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Sale ID</th>
+            <th>Medicine</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sale in sales %}
+        <tr>
+            <td>{{ sale.id }}</td>
+            <td>{{ sale.medicine.name }}</td>
+            <td>{{ sale.quantity }}</td>
+            <td>{{ sale.total_price }}</td>
+            <td>{{ sale.sale_date }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No sales history available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>  -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 40px;
+            color: #333;
+        }
+
+        /* Header styling */
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #2f80ed; /* Blue */
+            margin-bottom: 30px;
+        }
+
+        /* Profile section */
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .profile-container img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 5px solid #2f80ed;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-details {
+            max-width: 500px;
+            font-size: 1.1em;
+        }
+
+        .profile-details p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .profile-details strong {
+            color: #2f80ed; /* Blue */
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        th {
+            background-color: #28a745; /* Green */
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #e0f7ff;
+            cursor: pointer;
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-container img {
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            .profile-details {
+                font-size: 1em;
+            }
+
+            table {
+                font-size: 1em;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Your Profile</h2>
+
+    <div class="profile-container">
+        {% if customer.profile_image %}
+        <img src="{{ customer.profile_image.url }}" alt="Profile Image">
+        {% else %}
+        <img src="{% static 'default_profile.png' %}" alt="Default Profile Image">
+        {% endif %}
+        
+        <div class="profile-details">
+            <p><strong>Name:</strong> {{ customer.user.get_full_name }}</p>
+            <p><strong>Email:</strong> {{ customer.user.email }}</p>
+            <p><strong>Phone:</strong> {{ customer.phone }}</p>
+            <p><strong>Address:</strong> {{ customer.address }}</p>
+            <p><strong>Date of Birth:</strong> {{ customer.date_of_birth }}</p>
+        </div>
+    </div>
+
+    <h3>Your Activity</h3>
+    <h4>Sales History</h4>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Sale ID</th>
+                <th>Medicine</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sale in sales %}
+            <tr>
+                <td>{{ sale.id }}</td>
+                <td>{{ sale.medicine.name }}</td>
+                <td>{{ sale.quantity }}</td>
+                <td>${{ sale.total_price }}</td>
+                <td>{{ sale.sale_date }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No sales history available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

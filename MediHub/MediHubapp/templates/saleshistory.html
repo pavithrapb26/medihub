@@ -1,0 +1,161 @@
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h2>Sales History</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Sale ID</th>
+            <th>Medicine</th>
+            <th>Total Price</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sale in sales %}
+        <tr>
+            <td><a href="{% url 'invoice_details' sale.id %}">{{ sale.id }}</a></td>
+            <td>{{ sale.medicine.name }}</td>
+            <td>{{ sale.total_price }}</td>
+            <td>{{ sale.sale_date }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No sales history available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body></html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales History</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2f80ed; /* Blue color */
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        th {
+            background-color: #28a745; /* Green color */
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #e2f1ff;
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+
+        td {
+            color: #555;
+        }
+
+        td a {
+            text-decoration: none;
+            color: #2f80ed;
+            font-weight: bold;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        /* Empty state message */
+        .empty-message {
+            text-align: center;
+            font-size: 1.2em;
+            color: #888;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2em;
+            }
+
+            table {
+                font-size: 1em;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Sales History</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Sale ID</th>
+                <th>Medicine</th>
+                <th>Total Price</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sale in sales %}
+            <tr>
+                <td><a href="{% url 'invoice_details' sale.id %}">{{ sale.id }}</a></td>
+                <td>{{ sale.medicine.name }}</td>
+                <td>₹{{ sale.total_price }}</td>
+                <td>{{ sale.sale_date|date:"Y-m-d H:i" }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="empty-message">No sales history available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

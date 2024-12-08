@@ -1,0 +1,417 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediHub - Home</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: whitesmoke; /* Light stylish background */
+            color: black;
+            margin: 0;
+        }
+
+        /* Header Section */
+        header {
+            background:#3e4095; /* Gradient background */
+            color: white;
+            padding: 50px 0;
+            text-align: left;
+            position: relative;
+        }
+
+        header h1 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Unique font */
+            font-size: 4em; /* Larger font size */
+            margin: 0;
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        header p {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        header .quote {
+            font-style: italic;
+            font-size: 1.5em;
+            color: #f8f9fa;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* SignIn and Register Buttons */
+        .auth-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .auth-buttons button {
+            padding: 12px 20px;
+            font-size: 1.1em;
+            background-color: #65bc50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .auth-buttons button:hover {
+            background-color: #65bc50;
+        }
+
+        /* Main Container */
+        .container {
+            padding: 20px;
+        }
+
+        /* Feature Section */
+        .feature-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #65bc50;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-text {
+            flex: 1;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .feature-text h3 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        /* Carousel */
+        .carousel {
+            flex: 1;
+            position: relative;
+            width: 100%;
+            height: 400px; /* Fixed height for carousel */
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: #65bc50;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel img.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .carousel img.inactive {
+            opacity: 0;
+            z-index: 0;
+        }
+
+        .carousel .control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 2em;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 100;
+        }
+
+        .carousel .control.prev {
+            left: 10px;
+        }
+
+        .carousel .control.next {
+            right: 10px;
+        }
+
+        /* New Sections */
+        .new-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .new-section .carousel {
+            width: 45%;
+        }
+
+        .new-section .feature-text {
+            width: 45%;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #38362e;
+            color: white;
+            position: relative;
+            font-size: 1.2em;
+        }
+
+        footer p {
+            font-size: 1.2em;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        footer .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        footer .footer-bottom {
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        footer .footer-social {
+            margin-top: 20px;
+        }
+
+        footer .footer-social a {
+            font-size: 1.5em;
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+        }
+
+        footer .footer-social a:hover {
+            color: #ffdd57;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .feature-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-text {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .carousel {
+                width: 80%;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="auth-buttons">
+            <button onclick="window.location.href='/signin'">Home</button>
+            <button onclick="window.location.href='/about'">About</button>
+        </div>
+        <h1>MediHub</h1>
+        <p>Your Trusted Partner in Health & Wellness</p>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="container">
+        <!-- First Section -->
+        <div class="feature-section">
+            <div class="feature-text">
+                <h3>MediHub Pharmacy</h3>
+                <p>Discover how MediHub is revolutionizing healthcare with state-of-the-art services and an unparalleled range of medicines to cater to every need.</p>
+            </div>
+            <div class="carousel" id="carousel1">
+                <button class="control prev" onclick="prevSlide('carousel1')">&lt;</button>
+                <img src="{% static 'images/crsl9.jpeg' %}" alt="Image 1" class="active">
+                <img src="{% static 'images/crsl2.webp' %}" alt="Image 2" class="inactive">
+                <img src="{% static 'images/crsl3.webp' %}" alt="Image 3" class="inactive">
+                <button class="control next" onclick="nextSlide('carousel1')">&gt;</button>
+             </div>   
+        </div>
+
+        <!-- Second Section -->
+        <div class="feature-section">
+            <div class="carousel" id="carousel2">
+                <button class="control prev" onclick="prevSlide('carousel2')">&lt;</button>
+                <img src="{% static 'images/crsl4.webp' %}" alt="Image 4" class="active">
+                <img src="{% static 'images/crsl5.jpg' %}" alt="Image 5" class="inactive">
+                <img src="{% static 'images/crsl6.jpg' %}" alt="Image 6" class="inactive">
+                <button class="control next" onclick="nextSlide('carousel2')">&gt;</button>
+            </div>
+            <div class="feature-text">
+                <h3>Seamless Prescription Management</h3>
+                <p>Upload prescriptions with ease and have them approved instantly for a hassle-free experience in acquiring the right medicines.</p>
+            </div>
+        </div>
+
+        <!-- Third Section -->
+        <div class="feature-section">
+            <div class="feature-text">
+                <h3>Convenient Medicine Ordering</h3>
+                <p>Order medicines with just a few clicks and get them delivered to your doorstep in no time.</p>
+            </div>
+            <div class="carousel" id="carousel3">
+                <button class="control prev" onclick="prevSlide('carousel3')">&lt;</button>
+                <img src="{% static 'images/crsl7.jpg' %}" alt="Image 7" class="active">
+                <img src="{% static 'images/crsl8.jpg' %}" alt="Image 8" class="inactive">
+                <img src="{% static 'images/crsl9.jpeg' %}" alt="Image 9" class="inactive">
+                <button class="control next" onclick="nextSlide('carousel3')">&gt;</button>
+            </div>
+        </div>
+
+        <!-- Fourth Section -->
+        <div class="feature-section">
+            <div class="carousel" id="carousel4">
+                <button class="control prev" onclick="prevSlide('carousel4')">&lt;</button>
+                <img src="{% static 'images/crsl10.jpeg' %}" alt="Image 10" class="active">
+                <img src="{% static 'images/crsl11.webp' %}" alt="Image 11" class="inactive">
+                <img src="{% static 'images/crsl12.webp' %}" alt="Image 12" class="inactive">
+                <button class="control next" onclick="nextSlide('carousel4')">&gt;</button>
+            </div>
+            <div class="feature-text">
+                <h3>Emergency Health Support</h3>
+                <p>Our 24/7 emergency service ensures that help is just a call away, whenever you need it most.</p>
+            </div>
+        </div>
+
+        <!-- Fifth Section -->
+        <div class="feature-section">
+            <div class="feature-text">
+                <h3>Get Health Advice Online</h3>
+                <p>Chat with qualified doctors from the comfort of your home and get advice on your health concerns.</p>
+            </div>
+            <div class="carousel" id="carousel5">
+                <button class="control prev" onclick="prevSlide('carousel5')">&lt;</button>
+                <img src="{% static 'images/crsl13.jpg' %}" alt="Image 13" class="active">
+                <img src="{% static 'images/crsl14.webp' %}" alt="Image 14" class="inactive">
+                <img src="{% static 'images/crsl15.webp' %}" alt="Image 15" class="inactive">
+                <button class="control next" onclick="nextSlide('carousel5')">&gt;</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Follow Us</p>
+        <div class="footer-social">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 MediHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+
+        let autoSlideIntervals = {};
+
+function nextSlide(id) {
+    let carousel = document.getElementById(id);
+    let images = carousel.getElementsByTagName('img');
+    let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+    images[currentIndex].classList.remove('active');
+    images[currentIndex].classList.add('inactive');
+    currentIndex = (currentIndex + 1) % images.length;
+    images[currentIndex].classList.remove('inactive');
+    images[currentIndex].classList.add('active');
+}
+
+function prevSlide(id) {
+    let carousel = document.getElementById(id);
+    let images = carousel.getElementsByTagName('img');
+    let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+    images[currentIndex].classList.remove('active');
+    images[currentIndex].classList.add('inactive');
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    images[currentIndex].classList.remove('inactive');
+    images[currentIndex].classList.add('active');
+}
+
+function startAutoSlide(id, interval = 3000) {
+    stopAutoSlide(id); // Stop any existing interval for this carousel
+    autoSlideIntervals[id] = setInterval(() => nextSlide(id), interval);
+}
+
+function stopAutoSlide(id) {
+    if (autoSlideIntervals[id]) {
+        clearInterval(autoSlideIntervals[id]);
+        delete autoSlideIntervals[id];
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Start auto-slide for all carousels
+    let carousels = document.querySelectorAll('.carousel');
+    carousels.forEach(carousel => {
+        let id = carousel.id;
+        if (id) {
+            startAutoSlide(id, 3000); // Set interval to 3 seconds for all carousels
+        }
+    });
+
+    // Optional: Stop auto-slide on manual interaction
+    document.querySelectorAll('.control').forEach(button => {
+        button.addEventListener('click', function () {
+            let carousel = this.closest('.carousel');
+            if (carousel && carousel.id) {
+                stopAutoSlide(carousel.id);
+            }
+        });
+    });
+});
+
+    </script>
+</body>
+</html>
+
+

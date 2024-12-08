@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compare Brands - {{ medicine_name }}</title>
+</head>
+<body>
+    <h1>Compare Brands for {{ medicine_name }}</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Expiry Date</th>
+                <th>Ratings</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medicine in medicines %}
+                <tr>
+                    <td>{{ medicine.company.name }}</td>
+                    <td>{{ medicine.price }}</td>
+                    <td>{{ medicine.stock }}</td>
+                    <td>{{ medicine.expiry_date }}</td>
+                    <td>{{ medicine.ratings }}</td>
+                    <!-- <td><a href="{% url 'buy_medicine'  %}">Buy</a></td> -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table><br>
+    <a href="?sort=price">Sort by Price</a><br>
+<a href="?sort=ratings">Sort by Ratings</a><br>
+<a href="?sort=expiry_date">Sort by Expiry Date</a><br>
+
+</body>
+</html>

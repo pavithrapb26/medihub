@@ -1,0 +1,150 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicines in {{ category }}</title>
+</head>
+<body>
+    <h1>Medicines in {{ category }}</h1>
+    <div class="medicine-cards">
+        {% for medicine in medicines %}
+            <div class="card">
+                <img src="{{ medicine.image.url }}" alt="{{ medicine.name }}" width="100">
+                <h3>{{ medicine.name }}</h3>
+                <p>{{ medicine.description }}</p>
+                <p>Price: ${{ medicine.price }}</p>
+                <p>Stock: {{ medicine.stock }}</p>
+                <a href="{% url 'buy_medicine' medicine.id %}">Buy</a>
+                 <button onclick="addToCart({{ medicine.id }})">Add to Cart</button> -->
+                <!-- <a href="{% url 'add_to_cart' medicine.id %}">add  to cart</a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicines in {{ category }}</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #56ccf2, #28a745); /* Blue to green gradient */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .medicine-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            color: #333;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 80%;
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #28a745; /* Green color for title */
+        }
+
+        .card p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .card a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2f80ed; /* Blue color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            margin: 10px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .card a:hover {
+            background-color: #28a745; /* Green color on hover */
+        }
+
+        .card button {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #56ccf2; /* Light Blue */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: #28a745; /* Green color */
+        }
+    </style>
+</head>
+<body>
+    <h1>Medicines in {{ category }}</h1>
+    <div class="medicine-cards">
+        {% for medicine in medicines %}
+            <div class="card">
+                <img src="{{ medicine.image.url }}" alt="{{ medicine.name }}">
+                <h3>{{ medicine.name }}</h3>
+                <p>{{ medicine.description }}</p>
+                <p><strong>Price:</strong> ₹{{ medicine.price }}</p>
+                <p><strong>Stock:</strong> {{ medicine.stock }}</p>
+                <a href="{% url 'buy_medicine' medicine.id %}">Buy Now</a>
+                <a href="{% url 'add_to_cart' medicine.id %}">Add to Cart</a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

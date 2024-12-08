@@ -1,0 +1,162 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Feedback</h2>
+
+<!-- Display success or error messages -->
+<!-- {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+<form method="post" action="{% url 'feedback' %}">
+    {% csrf_token %}
+    <textarea name="feedback" rows="5" cols="40" placeholder="Enter your feedback here..." class="form-control"></textarea>
+    <br>
+    <button type="submit" class="btn btn-success">Submit Feedback</button> -->
+<!-- </form>
+    
+</body>
+</html> --> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 40px;
+            color: #333;
+        }
+
+        /* Title styling */
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #2f80ed;
+            margin-bottom: 40px;
+        }
+
+        /* Message Alert */
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .alert-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .alert-error {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        /* Feedback Form */
+        .feedback-form {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .feedback-form h3 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .feedback-form textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+
+        .feedback-form textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .feedback-form button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            font-size: 1.2em;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .feedback-form button:hover {
+            background-color: #218838;
+        }
+
+        /* Styling for responsive design */
+        @media (max-width: 768px) {
+            .feedback-form {
+                padding: 20px;
+            }
+
+            .feedback-form h3 {
+                font-size: 1.8em;
+            }
+
+            .feedback-form textarea {
+                font-size: 1em;
+            }
+
+            .feedback-form button {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>We Value Your Feedback</h2>
+
+    <!-- Display success or error messages -->
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" action="{% url 'feedback' %}" class="feedback-form">
+        {% csrf_token %}
+        <h3>Your Feedback Matters</h3>
+        <textarea name="feedback" rows="5" placeholder="Enter your feedback here..." class="form-control"></textarea>
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+</body>
+</html>

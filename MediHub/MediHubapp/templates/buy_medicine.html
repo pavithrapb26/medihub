@@ -1,0 +1,144 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy {{ medicine.name }}</title>
+</head>
+<body>
+    <h1>Buy {{ medicine.name }}</h1>
+    <p>Description: {{ medicine.description }}</p>
+    <p>Price: ${{ medicine.price }}</p>
+    <p>Stock: {{ medicine.stock }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" min="1" max="{{ medicine.stock }}" value="1" required>
+        <button type="submit">Proceed to Payment</button>
+    </form>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy {{ medicine.name }}</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e0f7fa; /* Light blue background */
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00796b; /* Teal green */
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #4a4a4a;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff; /* White background for the content area */
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #00796b; /* Teal green */
+        }
+
+        input[type="number"] {
+            width: 80px;
+            padding: 5px;
+            margin: 10px;
+            font-size: 1em;
+            border: 2px solid #00796b; /* Teal green border */
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #0288d1; /* Blue focus color */
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #00796b; /* Teal green */
+            color: white;
+            text-transform: uppercase;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0288d1; /* Blue hover effect */
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .highlight {
+            color: #0288d1; /* Blue text highlight */
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Buy <span class="highlight">{{ medicine.name }}</span></h1>
+        <p>Description: <span class="highlight">{{ medicine.description }}</span></p>
+        <p>Price: <span class="highlight">₹{{ medicine.price }}</span></p>
+        <p>Stock: <span class="highlight">{{ medicine.stock }}</span></p>
+
+        <form method="post">
+            {% csrf_token %}
+            <label for="quantity">Quantity:</label>
+            <input type="number" name="quantity" id="quantity" min="1" max="{{ medicine.stock }}" value="1" required>
+            <br>
+            <button type="submit">Proceed to Payment</button>
+        </form>
+    </div>
+    <div class="footer">
+        <p>© 2024 MediHub. All rights reserved.</p>
+    </div>
+    <a class="btn" href="{% url 'dashboard' %}">Back to Dashboard</a>
+</body>
+</html>

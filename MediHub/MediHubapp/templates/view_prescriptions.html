@@ -1,0 +1,139 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>View Prescriptions</title>
+</head>
+<body>
+    <h2>Your Uploaded Prescriptions</h2>
+    <ul>
+        {% for prescription in prescriptions %}
+            <li>
+                <a href="{{ prescription.prescription_file.url }}" target="_blank">View Prescription</a>
+                {% if prescription.is_approved %}
+                    <span style="color: green;">Approved</span>
+                {% else %}
+                    <span style="color: red;">Pending Approval</span>
+                {% endif %}
+                <br>Uploaded on: {{ prescription.uploaded_at }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Prescriptions</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e0f7fa; /* Light blue background */
+            color: #006400; /* Dark green text */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #ffffff; /* White background for content */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Styling */
+        h2 {
+            text-align: center;
+            color: #2e8b57; /* Medium green */
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        /* Prescription List Styling */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #b2dfdb; /* Light blue-green border */
+            border-radius: 5px;
+            background-color: #f1f8e9; /* Very light green background */
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #00796b; /* Blue-green */
+            font-weight: bold;
+        }
+
+        ul li a:hover {
+            color: #004d40; /* Darker blue-green */
+        }
+
+        ul li span {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        ul li .date {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        /* Back to Dashboard Link Styling */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #2e8b57; /* Green */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            background-color: #006400; /* Dark green */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Uploaded Prescriptions</h2>
+        <ul>
+            {% for prescription in prescriptions %}
+                <li>
+                    <a href="{{ prescription.prescription_file.url }}" target="_blank">View Prescription</a>
+                    {% if prescription.is_approved %}
+                        <span style="color: green;">Approved</span>
+                    {% else %}
+                        <span style="color: red;">Pending Approval</span>
+                    {% endif %}
+                    <span class="date">Uploaded on: {{ prescription.uploaded_at }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="back-link">
+            <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>
